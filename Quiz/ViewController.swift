@@ -9,7 +9,11 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet var questionLabel: UILabel!
+//    @IBOutlet var questionLabel: UILabel!
+    @IBOutlet var currentQuesitonLabel: UILabel!
+    @IBOutlet var nextQuestionLabel: UILabel!
+    
+    
     @IBOutlet var answerLabel: UILabel!
     
     @IBAction func showNextQuestion(_ sender: UIButton) {
@@ -19,8 +23,11 @@ class ViewController: UIViewController {
         }
         
         let question = questions[currentQuestionIndex]
-        questionLabel.text = question
+//        questionLabel.text = question
+        nextQuestionLabel.text = question
         answerLabel.text = "???"
+        
+        animateLabelTransitions()
     }
     
     @IBAction func showAnswer(_ sender: UIButton) {
@@ -45,7 +52,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        questionLabel.text = questions[currentQuestionIndex]
+//        questionLabel.text = questions[currentQuestionIndex]
+        currentQuesitonLabel.text = questions[currentQuestionIndex]
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,5 +63,28 @@ class ViewController: UIViewController {
     }
 
 
+    func animateLabelTransitions() {
+//        let animationClosure = { () -> Void in
+//            self.questionLabel.alpha = 1
+//        }
+        
+        // Animate the alpha
+//        UIView.animate(withDuration: 0.5, animations: animationClosure)
+        
+        UIView.animate(withDuration: 5, animations: {
+//            self.questionLabel.alpha = 1
+            self.currentQuesitonLabel.alpha = 0
+            self.nextQuestionLabel.alpha = 1
+        })
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Set the label's initial alpha
+//        questionLabel.alpha = 0
+        nextQuestionLabel.alpha = 0
+    }
+    
 }
 
