@@ -52,7 +52,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        questionLabel.text = questions[currentQuestionIndex]
         currentQuesitonLabel.text = questions[currentQuestionIndex]
         
     }
@@ -64,18 +63,11 @@ class ViewController: UIViewController {
 
 
     func animateLabelTransitions() {
-//        let animationClosure = { () -> Void in
-//            self.questionLabel.alpha = 1
-//        }
+
         
-        // Animate the alpha
-//        UIView.animate(withDuration: 0.5, animations: animationClosure)
-        
-        UIView.animate(withDuration: 5, animations: {
-//            self.questionLabel.alpha = 1
-            self.currentQuesitonLabel.alpha = 0
-            self.nextQuestionLabel.alpha = 1
-        })
+        UIView.animate(withDuration: 0.5, delay: 0, options: [], animations: { self.currentQuesitonLabel.alpha = 0
+            self.nextQuestionLabel.alpha = 1 }, completion: { _ in swap (&self.currentQuesitonLabel, &self.nextQuestionLabel) }
+        )
     }
     
     override func viewWillAppear(_ animated: Bool) {
