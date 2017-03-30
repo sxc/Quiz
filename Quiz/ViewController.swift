@@ -82,9 +82,12 @@ class ViewController: UIViewController {
         self.currentQuestionLabelCenterXConstraint.constant += screenWidth
 
         
+//        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: <#T##() -> Void#>, completion: TID_NULL)
+        
+        
         UIView.animate(withDuration: 0.5,
                        delay: 0,
-                       options: [],
+                       options: [.curveEaseOut],
                        animations: { self.currentQuesitonLabel.alpha = 0
             self.nextQuestionLabel.alpha = 1
                         self.view.layoutIfNeeded()
@@ -95,6 +98,7 @@ class ViewController: UIViewController {
             self.updateOffScreenLabel()
         
         
+            
         
         }
         )
